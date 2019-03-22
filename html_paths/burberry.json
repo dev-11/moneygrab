@@ -1,7 +1,7 @@
 {
   "SKU": "div.product-id.section",
   "Colour": "div#colour-picker-value.picker-value",
-  "Brand": burberry,
+  "Brand": "burberry",
   "Region": null,
   "Category_Name": null,
   "Description": "div.cell-paragraph.cell-paragraph_description.ta-cell-paragraph_description.description-cell__details-copy",
