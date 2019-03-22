@@ -1,5 +1,3 @@
-import pytest
-
 from moneygrab.cli import get_moneygrab_parser
 
 

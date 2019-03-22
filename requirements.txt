@@ -1,3 +1,4 @@
+PyYAML
 scrapy
 beautifulsoup4
 pytest

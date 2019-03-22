@@ -1,0 +1,8 @@
+
+
+companies:
+  name: fake_corp
+  allowed_domains:
+    - fake_domain.com
+  start_urls:
+    - https://www.fake_domain.com

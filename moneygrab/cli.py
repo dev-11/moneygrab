@@ -1,5 +1,7 @@
 import argparse
 import sys
+import yaml
+from moneygrab.spider import run_spider
 
 
 def get_moneygrab_parser():
@@ -9,7 +11,10 @@ def get_moneygrab_parser():
 
 
 def run_moneygrab(args):
-    pass
+    with open("../config.yaml", "r") as config_file:
+        config = yaml.safe_load(config_file)
+
+    run_spider(config["companies"][args.company])
 
 
 if __name__ == "__main__":
