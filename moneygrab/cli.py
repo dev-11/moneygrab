@@ -19,7 +19,8 @@ def _get_row_representation(data_dict):
         data_dict.get("id"),
         data_dict.get("name"),
         data_dict.get("price"),
-        data_dict.get("datetime")
+        data_dict.get("datetime"),
+        data_dict.get("brand")
     ]
 
 
@@ -35,7 +36,7 @@ def run_moneygrab(args):
         rows = []
         for data_dict in data_dicts:
             rows.append(_get_row_representation(data_dict))
-        write_file("output.tsv", rows)
+        write_file(f"{company_config['name']}.tsv", rows, header=["id", "name", "price", "datetime", "brand"])
     else:
         raise ValueError(f"Unexpected command {args.command}")
 

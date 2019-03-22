@@ -1,6 +1,5 @@
 import glob
 import os
-from datetime import datetime
 
 from scrapy.http import HtmlResponse
 
@@ -14,8 +13,13 @@ def scrape_local_pages(company_config):
             product_html = product_file.read()
 
         spider_time = os.stat(file_name).st_mtime
-        data = scrape_page(product_html, company_config["parsers"])
+        try:
+            data = scrape_page(product_html, company_config["parsers"])
+        except ValueError as e:
+            print(len(scraped_data), "successes")
+            raise ValueError(f"Scraping {file_name} failed") from e
         data["datetime"] = spider_time
+        data["brand"] = company_config['name']
         scraped_data.append(data)
     return scraped_data
 
@@ -31,7 +35,7 @@ def scrape_page(body, parsers):
             data = {}
             for attribute in parser["attributes"]:
                 try:
-                    data[attribute] = response.selector.xpath(parser["attributes"][attribute]).get()
+                    data[attribute] = response.selector.xpath(parser["attributes"][attribute]).get().strip()
                 except Exception:
                     print(parser["attributes"][attribute], "failed to parse")
                     continue
