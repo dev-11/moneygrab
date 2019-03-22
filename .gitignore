@@ -10,6 +10,8 @@ config.yaml
 # C extensions
 *.so
 
+.idea/workspace.xml
+
 # Distribution / packaging
 .Python
 build/
