@@ -8,10 +8,12 @@ from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 
 class ProductSpider(scrapy.spiders.Spider):
 
+    regexes = []
+
     def parse(self, response):
         page = response.url.split("/")[-1]
 
-        if re.search(r"\d{6,8}", page):
+        if not self.regexes or any([re.search(regex, page) for regex in self.regexes]):
             filename = '../products/%s.html' % page
             with open(filename, 'wb') as f:
                 f.write(response.body)
@@ -29,13 +31,14 @@ def get_spider_for_company(company_config):
         {
             "name": company_config["name"],
             "allowed_domains": company_config["allowed_domains"],
-            "start_urls": company_config["start_urls"]
+            "start_urls": company_config["start_urls"],
+            "regexes": company_config.get("regexes", [])
         }
     )
 
 
-def run_spider(company_config, limit=100):
-    spider_class = get_spider_for_company(company_config, limit=limit)
+def run_spider(company_config):
+    spider_class = get_spider_for_company(company_config)
 
     process = CrawlerProcess({
         'USER_AGENT': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)'
