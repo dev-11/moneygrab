@@ -1,0 +1,17 @@
+{
+  "SKU": "div.product-id.section",
+  "Colour": "div#colour-picker-value.picker-value",
+  "Brand": burberry,
+  "Region": null,
+  "Category_Name": null,
+  "Description": "div.cell-paragraph.cell-paragraph_description.ta-cell-paragraph_description.description-cell__details-copy",
+  "Price": "span.price-amount.ta-price-amount.price-amount-without-monogramming",
+  "Price_Regular": null,
+  "Price_Currency": "span.price-amount.ta-price-amount.price-amount-without-monogramming",
+  "Has_Promo": null,
+  "Has_Markdown": null,
+  "Date": null,
+  "URL": null,
+  "Variant:size": null,
+  "Variant:sizes_out_of_stock": null
+}
