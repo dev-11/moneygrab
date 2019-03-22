@@ -1,0 +1,17 @@
+{
+  "SKU": "#the-description-tab-content",
+  "Colour": null,
+  "Brand": "dior",
+  "Region": null,
+  "Category_Name": null,
+  "Description": "#the-description-tab-content\",",
+  "Price": "span.price-line",
+  "Price_Regular": null,
+  "Price_Currency": "#the-description-tab-content",
+  "Has_Promo": null,
+  "Has_Markdown": null,
+  "Date": null,
+  "URL": null,
+  "Variant:size": "span.size.variation.is-available",
+  "Variant:sizes_out_of_stock": "span.size.variation"
+}
