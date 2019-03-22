@@ -1,15 +1,23 @@
 import glob
+import os
+from datetime import datetime
 
 from scrapy.http import HtmlResponse
 
 
 def scrape_local_pages(company_config):
 
+    scraped_data = []
+
     for file_name in glob.glob(f"../products/{company_config['name']}/*"):
         with open(file_name, 'r') as product_file:
             product_html = product_file.read()
-        ul = scrape_page(product_html, company_config["parsers"])
-        print(file_name, ul)
+
+        spider_time = os.stat(file_name).st_mtime
+        data = scrape_page(product_html, company_config["parsers"])
+        data["datetime"] = spider_time
+        scraped_data.append(data)
+    return scraped_data
 
 
 def scrape_page(body, parsers):
